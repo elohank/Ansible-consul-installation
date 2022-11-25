@@ -1,0 +1,6 @@
+---
+# tasks file for consul_role
+
+ - include_tasks: user.yml
+ - include_tasks: consul.yml
+ - include_tasks: directory.yml

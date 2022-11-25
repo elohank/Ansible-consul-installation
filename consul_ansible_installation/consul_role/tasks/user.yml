@@ -1,0 +1,15 @@
+---
+
+ - name: Creating consul user group
+   group:
+    name: "{{ consul_group }}"
+   become: true
+
+
+ - name: Creating consul user
+   user:
+    name: "{{ consul_user }}"
+    group: "{{ consul_group }}"
+    system: yes
+    comment: "consul User"
+    state: present

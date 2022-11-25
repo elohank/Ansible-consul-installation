@@ -1,0 +1,7 @@
+---
+# vars file for consul_role
+consul_group: "consul"
+consul_user:  "consul"
+consul_checksum: "sha256:e544964cf4df3fc18f58bb875bdbad4c7a6ff746ab7f7f6b0d7a0d469893490d"
+consul_install_prerequisites: "unzip"
+consul_version: "1.14.1"

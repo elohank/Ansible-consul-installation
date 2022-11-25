@@ -1,0 +1,43 @@
+--- 
+
+      - name: Create a configuration directory
+        ansible.builtin.file:
+         path: /etc/consul.d
+         state: directory
+         mode: '0755'
+         owner: root
+         group: root
+
+      - name: Create a configuration directory
+        ansible.builtin.file:
+         path: /var/consul
+         state: directory
+         mode: '0755'
+         owner: consul
+         group: consul
+
+      - name: Create a consul configuration file
+        ansible.builtin.file:
+         path: /etc/consul.d/config.json
+         state: touch
+         owner: root
+         group: root  
+         mode: '0755'
+
+      - name: config file
+        ansible.builtin.template:
+           src: config.hcl.j2
+           dest: /etc/consul.d/config.json
+           owner: root
+           group: root
+           mode: '0644'     
+
+      - name: Copy systemd init file
+        ansible.builtin.template:
+           src: init.service.j2 
+           dest: /etc/systemd/system/consul.service
+           owner: consul
+           group: consul
+           mode: '0644'  
+        notify:
+             start consul
